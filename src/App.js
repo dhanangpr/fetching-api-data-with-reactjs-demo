@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.exchangeratesapi.io/latest?base=GBP") // data source is an object, not an array.
+    fetch("https://api.exchangeratesapi.io/latest?base=IDR") // data source is an object, not an array.
       .then(res => res.json()) // Short typo for response.
       .then(
         result => {
@@ -39,7 +39,7 @@ class App extends Component {
     } else {
       // Do nothing...
     }
-    var fixedCrr = crr.toFixed(4).toString();
+    var fixedCrr = crr.toFixed(6).toString();
     while (fixedCrr.length < 8) {
       fixedCrr = "0" + fixedCrr;
     }
@@ -52,7 +52,7 @@ class App extends Component {
     let ratesArr = Object.keys(rates).map(i => rates[i])[2];
     let table = [];
     let children = [];
-    let displayedCurrencies = ["RUB", "CAD", "USD", "CHF", "JPY", "EUR"];
+    let displayedCurrencies = ["CAD", "IDR", "JPY", "CHF", "EUR", "USD"];
 
     // The following loop is used to create inner structure (children) of the table.
     for (var key in ratesArr) {
@@ -95,7 +95,7 @@ class App extends Component {
               {this.createTable()}
             </table>
             <p>
-              * base currency is GBP
+              * base currency is IDR
               <br />* As for the API,&nbsp;
               <a href="https://exchangeratesapi.io/">
                 https://exchangeratesapi.io/
